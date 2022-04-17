@@ -4,22 +4,22 @@ import { CircularProgress, Grid, Typography, InputLabel, MenuItem, FormControl, 
 import PlaceDetails from '../PlaceDetails/PlaceDetails';
 import useStyles from './styles';
 
-const List = () => {
+const List = ({ places }) => {
     const classes = useStyles();
     const [type, setType] = useState('restaurants');
     const [rating, setRating] = useState('');
 
-    const places = [
-        { name: 'Ed Grimley\'s Bar'},
-        { name: 'Skydiving Frisbee Ranch'},
-        { name: 'Eat At Joe\'s'},
-        { name: 'Tycoon Lagoon'},
-        { name: 'Mr. T Experience'},
-        { name: 'Piggyback Ranch'},
-        { name: 'Air Bhiron Dohmnall'},
-        { name: 'Silver Spear'},
-        { name: 'Eats'}
-    ];
+    // const places = [
+    //     { name: 'Ed Grimley\'s Bar'},
+    //     { name: 'Skydiving Frisbee Ranch'},
+    //     { name: 'Eat At Joe\'s'},
+    //     { name: 'Tycoon Lagoon'},
+    //     { name: 'Mr. T Experience'},
+    //     { name: 'Piggyback Ranch'},
+    //     { name: 'Air Bhiron Dohmnall'},
+    //     { name: 'Silver Spear'},
+    //     { name: 'Eats'}
+    // ];
 
  
     return (

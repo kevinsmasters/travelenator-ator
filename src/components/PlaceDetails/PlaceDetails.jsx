@@ -5,7 +5,7 @@ import {
 } from '@material-ui/core';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import PhoneIcon from '@material-ui/icons/Phone';
-import Rating from '@material-ui/lab';
+import Rating from '@material-ui/lab/Rating';
 
 import useStyles from './styles';
 
@@ -24,7 +24,13 @@ const PlaceDetails = ({ place }) => {
             <CardContent>
                 <Typography gutterBottom variant="h5">
                     {place.name}
-                </Typography>
+                </Typography> 
+                <Box display="flex" justifyContent="space-between">
+                <Rating value={Number(place.rating)} readOnly />
+                    <Typography variant="subtitle1" gutterBottom>
+                        out of {place.num_reviews} reviews
+                    </Typography>
+                </Box>
                 <Box display="flex" justifyContent="space-between">
                     <Typography variant="subtitle1">
                         Price

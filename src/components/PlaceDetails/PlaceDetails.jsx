@@ -12,9 +12,8 @@ import useStyles from './styles';
 
 
 const PlaceDetails = ({ place, selected, refProp }) => {
-    //console.log('place: ', place)
-    const classes = useStyles();
     if(selected) refProp?.current?.scrollIntoView({ behavior: "smooth", block: "start"});
+    const classes = useStyles();
     return (
         <Card elevation={6}>
             <CardMedia 
@@ -24,7 +23,7 @@ const PlaceDetails = ({ place, selected, refProp }) => {
             />
             <CardContent>
                 <Typography gutterBottom variant="h5">
-                    {place.name}
+                    {place.name} 
                 </Typography> 
                 <Box display="flex" justifyContent="space-between">
                 <Rating value={Number(place.rating)} readOnly />

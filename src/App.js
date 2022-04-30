@@ -7,9 +7,9 @@ import Map from './components/Map/Map';
 import { getPlacesData } from './api'
 const App =()=> {
     const [places, setPlaces] = useState([]);
-    const [coordinates, setCoordinates] = useState({lat: 29.9012, lng: -81.3124}); //{lat: 29.9012, lng: -81.3124}
+    const [childClicked, setChildClicked] = useState(null);
+    const [coordinates, setCoordinates] = useState({}); //{lat: 29.9012, lng: -81.3124}
     const [bounds, setBounds] = useState({});
-    const [childClicked, setChildClicked] = useState(null)
 
     const [isLoading, setIsLoading] = useState(false);
 
@@ -21,15 +21,14 @@ const App =()=> {
 
     useEffect(()=> {
         setIsLoading(true);
-        if( bounds) {
-            console.log("coords, bounds:", coordinates, bounds)
+            //console.log("coords, bounds:", coordinates, bounds)
         getPlacesData(bounds.sw, bounds.ne)
             .then((data)=> {
-                console.log(data);
+                //console.log(data);
                 setPlaces(data);
                 setIsLoading(false);
             });
-        }
+        
     }, [coordinates, bounds]);
     return (
         <>

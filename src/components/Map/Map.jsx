@@ -12,6 +12,10 @@ const Map = ({ setCoordinates, setBounds, coordinates, places, setChildClicked }
 
     //const coordinates = { lat: 29.9012, lng: -81.3124 }
 
+    const childClicker = (child) => {
+        //console.log('clicked! ', child);
+        setChildClicked(child);
+    }
     return (
         <div className={classes.mapContainer}>
             <GoogleMapReact
@@ -31,7 +35,7 @@ const Map = ({ setCoordinates, setBounds, coordinates, places, setChildClicked }
                         sw: e.marginBounds.sw
                     })
                 }}
-                onChildClick={(child)=> setChildClicked(child)}
+                onChildClick={(child)=> childClicker(child)}
             >
                 {places?.map((place, i) => (
                     <div

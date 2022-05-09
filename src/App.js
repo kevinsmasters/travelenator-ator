@@ -43,7 +43,7 @@ const App =()=> {
     return (
         <>
             <CssBaseline />
-            <Header />
+            <Header setCoordinates={setCoordinates} />
             <Grid 
                 container 
                 spacing={3}

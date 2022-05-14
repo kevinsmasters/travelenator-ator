@@ -4,9 +4,10 @@ import Header from './components/Header/Header';
 import List from './components/List/List';
 import Map from './components/Map/Map';
 
-import { getPlacesData } from './api'
+import { getPlacesData, getWeatherData } from './api'
 const App =()=> {
     const [places, setPlaces] = useState([]);
+    const [weatherData, setWeatherData] = useState([]);
     const [filteredPlaces, setFilteredPlaces] = useState([])
     const [childClicked, setChildClicked] = useState(null);
     const [coordinates, setCoordinates] = useState({}); //{lat: 29.9012, lng: -81.3124}
@@ -24,17 +25,27 @@ const App =()=> {
     }, []);
 
     useEffect(()=> {
-        setIsLoading(true);
+        if(bounds.sw && bounds.ne) {
+            setIsLoading(true);
             //console.log("coords, bounds:", coordinates, bounds)
+
+        getWeatherData(coordinates.lat, coordinates.lng)
+            .then(() => setWeatherData = (data))
+
         getPlacesData(type, bounds.sw, bounds.ne)
             .then((data)=> {
                 //console.log(data);
-                setPlaces(data);
+                setPlaces(data?.filter((place) => place.name && place.num_reviews > 0));
                 setFilteredPlaces([]);
                 setIsLoading(false);
             });
+        }
         
-    }, [type, coordinates, bounds]);
+        
+    }, [type, bounds]);
+
+    console.log(places);
+    console.log(filteredPlaces);
 
     useEffect(() => {
         const filteredPlaces = places.filter((place) => place.rating > rating);

@@ -30,7 +30,7 @@ const App =()=> {
             //console.log("coords, bounds:", coordinates, bounds)
 
         getWeatherData(coordinates.lat, coordinates.lng)
-            .then(() => setWeatherData = (data))
+            .then((data) => setWeatherData(data));
 
         getPlacesData(type, bounds.sw, bounds.ne)
             .then((data)=> {
@@ -44,8 +44,8 @@ const App =()=> {
         
     }, [type, bounds]);
 
-    console.log(places);
-    console.log(filteredPlaces);
+    console.log("places: ", places);
+    console.log("filtered places: ",filteredPlaces);
 
     useEffect(() => {
         const filteredPlaces = places.filter((place) => place.rating > rating);
@@ -86,6 +86,7 @@ const App =()=> {
                         coordinates={coordinates}
                         places={filteredPlaces.length ? filteredPlaces : places} 
                         setChildClicked={setChildClicked}
+                        weatherData={weatherData}
                     />   
                 </Grid>
             </Grid>
